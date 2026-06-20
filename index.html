@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+
   <div id="loginView" class="login-wrapper">
     <form id="loginForm" class="login-card">
       <h1>Librería El Estudiante</h1>
@@ -47,6 +48,7 @@
     </aside>
 
     <main class="main">
+
       <section id="dashboard" class="section active">
         <div class="page-header">
           <h1>Panel Principal</h1>
@@ -54,10 +56,25 @@
         </div>
 
         <div class="kpi-grid">
-          <div class="card"><h3>Ventas de hoy</h3><p id="kpiVentasHoy">C$0.00</p></div>
-          <div class="card"><h3>Compras de hoy</h3><p id="kpiComprasHoy">C$0.00</p></div>
-          <div class="card"><h3>Clientes</h3><p id="kpiClientes">0</p></div>
-          <div class="card"><h3>Productos con stock bajo</h3><p id="kpiStockBajo">0</p></div>
+          <div class="card">
+            <h3>Ventas de hoy</h3>
+            <p id="kpiVentasHoy">C$0.00</p>
+          </div>
+
+          <div class="card">
+            <h3>Compras de hoy</h3>
+            <p id="kpiComprasHoy">C$0.00</p>
+          </div>
+
+          <div class="card">
+            <h3>Clientes</h3>
+            <p id="kpiClientes">0</p>
+          </div>
+
+          <div class="card">
+            <h3>Productos con stock bajo</h3>
+            <p id="kpiStockBajo">0</p>
+          </div>
         </div>
 
         <div class="grid-2">
@@ -65,6 +82,7 @@
             <h2>Ventas recientes</h2>
             <div id="ventasRecientes"></div>
           </div>
+
           <div class="panel">
             <h2>Stock bajo</h2>
             <div id="stockBajoLista"></div>
@@ -91,7 +109,7 @@
       <section id="clientes" class="section">
         <div class="page-header">
           <h1>Clientes</h1>
-          <button class="primary" onclick="openPersonaModal('clientes','Cliente')">Agregar cliente</button>
+          <button class="primary admin-only" onclick="openPersonaModal('clientes','Cliente')">Agregar cliente</button>
         </div>
         <div id="clientesTable"></div>
       </section>
@@ -142,6 +160,7 @@
         </div>
         <div id="usuariosTable"></div>
       </section>
+
     </main>
   </div>
 
