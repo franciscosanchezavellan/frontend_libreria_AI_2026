@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistema de Facturación | Librería El Estudiante</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="loginView" class="login-wrapper">
+    <form id="loginForm" class="login-card">
+      <h1>Librería El Estudiante</h1>
+      <p>Sistema de Facturación e Inventario</p>
+
+      <label>Usuario</label>
+      <input id="loginUser" type="text" placeholder="admin o empleado" required />
+
+      <label>Contraseña</label>
+      <input id="loginPass" type="password" placeholder="1234" required />
+
+      <button type="submit">Iniciar sesión</button>
+
+      <small>
+        Admin: <b>admin / 1234</b><br>
+        Empleado: <b>empleado / 1234</b>
+      </small>
+    </form>
+  </div>
+
+  <div id="appView" class="app hidden">
+    <aside class="sidebar">
+      <h2>Librería<br>El Estudiante</h2>
+      <p id="sessionInfo" class="session-info"></p>
+
+      <button class="nav-btn active" data-section="dashboard">Dashboard</button>
+      <button class="nav-btn" data-section="productos">Productos</button>
+      <button class="nav-btn" data-section="categorias">Categorías</button>
+      <button class="nav-btn" data-section="clientes">Clientes</button>
+      <button class="nav-btn" data-section="proveedores">Proveedores</button>
+      <button class="nav-btn" data-section="marcas">Marcas</button>
+      <button class="nav-btn" data-section="compras">Compras</button>
+      <button class="nav-btn" data-section="ventas">Ventas</button>
+      <button class="nav-btn" data-section="inventario">Inventario</button>
+      <button class="nav-btn admin-only" data-section="usuarios">Usuarios</button>
+
+      <button id="logoutBtn" class="logout-btn">Cerrar sesión</button>
+    </aside>
+
+    <main class="main">
+      <section id="dashboard" class="section active">
+        <div class="page-header">
+          <h1>Panel Principal</h1>
+          <button id="resetDemoBtn" class="danger admin-only">Reiniciar datos demo</button>
+        </div>
+
+        <div class="kpi-grid">
+          <div class="card"><h3>Ventas de hoy</h3><p id="kpiVentasHoy">C$0.00</p></div>
+          <div class="card"><h3>Compras de hoy</h3><p id="kpiComprasHoy">C$0.00</p></div>
+          <div class="card"><h3>Clientes</h3><p id="kpiClientes">0</p></div>
+          <div class="card"><h3>Productos con stock bajo</h3><p id="kpiStockBajo">0</p></div>
+        </div>
+
+        <div class="grid-2">
+          <div class="panel">
+            <h2>Ventas recientes</h2>
+            <div id="ventasRecientes"></div>
+          </div>
+          <div class="panel">
+            <h2>Stock bajo</h2>
+            <div id="stockBajoLista"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="productos" class="section">
+        <div class="page-header">
+          <h1>Productos</h1>
+          <button class="primary admin-only" onclick="openProductoModal()">Agregar producto</button>
+        </div>
+        <div id="productosTable"></div>
+      </section>
+
+      <section id="categorias" class="section">
+        <div class="page-header">
+          <h1>Categorías</h1>
+          <button class="primary admin-only" onclick="openSimpleModal('categorias','Categoría')">Agregar categoría</button>
+        </div>
+        <div id="categoriasTable"></div>
+      </section>
+
+      <section id="clientes" class="section">
+        <div class="page-header">
+          <h1>Clientes</h1>
+          <button class="primary" onclick="openPersonaModal('clientes','Cliente')">Agregar cliente</button>
+        </div>
+        <div id="clientesTable"></div>
+      </section>
+
+      <section id="proveedores" class="section">
+        <div class="page-header">
+          <h1>Proveedores</h1>
+          <button class="primary admin-only" onclick="openPersonaModal('proveedores','Proveedor')">Agregar proveedor</button>
+        </div>
+        <div id="proveedoresTable"></div>
+      </section>
+
+      <section id="marcas" class="section">
+        <div class="page-header">
+          <h1>Marcas</h1>
+          <button class="primary admin-only" onclick="openSimpleModal('marcas','Marca')">Agregar marca</button>
+        </div>
+        <div id="marcasTable"></div>
+      </section>
+
+      <section id="compras" class="section">
+        <div class="page-header">
+          <h1>Compras</h1>
+          <button class="primary admin-only" onclick="openCompraModal()">Registrar compra</button>
+        </div>
+        <div id="comprasTable"></div>
+      </section>
+
+      <section id="ventas" class="section">
+        <div class="page-header">
+          <h1>Ventas</h1>
+          <button class="primary" onclick="openVentaModal()">Registrar venta</button>
+        </div>
+        <div id="ventasTable"></div>
+      </section>
+
+      <section id="inventario" class="section">
+        <div class="page-header">
+          <h1>Inventario</h1>
+        </div>
+        <div id="inventarioTable"></div>
+      </section>
+
+      <section id="usuarios" class="section">
+        <div class="page-header">
+          <h1>Usuarios y Roles</h1>
+          <button class="primary admin-only" onclick="openUsuarioModal()">Agregar usuario</button>
+        </div>
+        <div id="usuariosTable"></div>
+      </section>
+    </main>
+  </div>
+
+  <div id="modalRoot"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
